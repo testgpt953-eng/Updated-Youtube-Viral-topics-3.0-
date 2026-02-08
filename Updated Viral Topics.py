@@ -232,6 +232,12 @@ if st.button("🚀 Analyze Niche", type="primary"):
                     response = requests.get(YOUTUBE_SEARCH_URL, params=search_params)
                     data = response.json()
                     
+                    # (NEW) Check for API errors
+                    if "error" in data:
+                        st.error(f"🚨 YouTube API Error: {data['error'].get('message', 'Unknown error')}")
+                        st.json(data["error"])
+                        st.stop()
+                    
                     if "items" not in data or not data["items"]:
                         continue
                     
@@ -254,6 +260,12 @@ if st.button("🚀 Analyze Niche", type="primary"):
                     }
                     stats_response = requests.get(YOUTUBE_VIDEO_URL, params=stats_params)
                     stats_data = stats_response.json()
+                    
+                    # (NEW) Check for API errors in stats response
+                    if "error" in stats_data:
+                        st.error(f"🚨 YouTube API Error (Stats): {stats_data['error'].get('message', 'Unknown error')}")
+                        st.json(stats_data["error"])
+                        st.stop()
                     
                     if "items" not in stats_data:
                         continue
@@ -285,6 +297,12 @@ if st.button("🚀 Analyze Niche", type="primary"):
                     }
                     channel_response = requests.get(YOUTUBE_CHANNEL_URL, params=channel_params)
                     channel_data = channel_response.json()
+                    
+                    # (NEW) Check for API errors in channel response
+                    if "error" in channel_data:
+                        st.error(f"🚨 YouTube API Error (Channels): {channel_data['error'].get('message', 'Unknown error')}")
+                        st.json(channel_data["error"])
+                        st.stop()
                     
                     if "items" not in channel_data:
                         continue
