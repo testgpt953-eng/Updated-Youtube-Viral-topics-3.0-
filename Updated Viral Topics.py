@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 from collections import defaultdict
 
 # YouTube API Key 
-API_KEY = "AIzaSyDhtAiERk4UBBK8V_qZggOw5Ca6LRE8JVY"
+API_KEY = "AIzaSyBzDL7Q8bOCidXPtNHDJN8q3CRV6a-W7Uk"
 
 YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search"
 YOUTUBE_VIDEO_URL = "https://www.googleapis.com/youtube/v3/videos"
